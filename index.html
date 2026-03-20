@@ -191,14 +191,13 @@
 	const hydra = new Hydra({ detectAudio: false });
 
 	const palabras = {
-  	  celulas: () => voronoi(10,3,4).modulateRotate(noise(()=>a.fft[0]/50),0.5).colorama(0.5).add(osc(3,0.5,2),2).modulate(shape(8,3,5),5),
+  	celulas: () => voronoi(10,3,4).modulateRotate(noise(()=>a.fft[0]/50),0.5).colorama(0.5).add(osc(3,0.5,2),2).modulate(shape(8,3,5),5),
       tejido: () => osc(6,0,0).color(1.14,0.6,0.6).rotate(0.92,0.3).pixelate(20,10).mult(osc(40,0.03).thresh(0.4).rotate(0,-0.02)).modulateRotate(osc(20,0).thresh(0.3,0.6),() => 0.1 + mouse.x * 0.002),
       manchas: () => noise(3,0.5).thresh(0.5,0.04).colorama(10.5,4,3),
       regeneracion: () => shape(4,0.5,0.5).repeat(10,10).mult(noise(10,1,20)).colorama(10.5,4,3),
       estrias: () => noise(12,1).color(1.14,0.6,0.6).pixelate(80,30),
       polvo: () => voronoi(50,2,9).thresh((0.3,0.6),() => 0.1 + mouse.x * 0.002),
       sangre: () => shape(20,0.2,0.3).color(0.5,0.9,1).scale(() => Math.sin(time)+1*2).repeat(() => Math.sin(time)*10).modulateRotate(o0).scale(() => Math.sin(time)+1 *1.5).modulate(noise(2,2)).rotate(1, .2).invert(2.4),
-
   	magt: () => {
     	osc(40,0.5,() => a.fft[0]*200).out(o2)
     	let shape = osc(60, 0.1, 2)
@@ -207,6 +206,34 @@
     	shape.out(o0)
     	return shape
   	},
+	};
+
+	// Descripciones opcionales para cada palabra
+	const descripciones = {
+  	paco: "Oscilaciones suaves con colorama",
+  	mestizo: "Voronoi con tonos cálidos",
+  	periquin: "Voronoi pixelado con noise",
+  	kenya: "Noise con colorama invertido",
+  	fuego: "Noise con modulación de escala",
+  	delirio: "Oscilaciones con modulación",
+  	amor: "Voronoi modulado con osc",
+  	remix: "Noise modulado y diferenciado",
+  	a: "Voronoi pixelado con escala",
+  	b: "Osc modulado con noise",
+  	c: "Noise con voronoi y kaleidoscopio",
+  	d: "Formas geométricas rotativas",
+  	e: "Voronoi rotativo multicolor",
+  	f: "Oscilaciones pixeladas",
+  	g: "Noise pixelado rotativo",
+  	h: "Noise repetitivo modulado",
+  	i: "Oscilaciones con kaleidoscopio",
+  	j: "Voronoi multicolor pixelado",
+  	k: "Oscilaciones rotativas",
+  	traduccion: "Voronoi con colores RGB",
+  	global: "Oscilaciones pixeladas y kaleid",
+  	intraducibilidad: "Noise colorido pixelado",
+  	follow: "Composición compleja modulada",
+  	magt: "Oscilaciones dinámicas aleatorias"
 	};
 
 	const input = document.getElementById("input");
@@ -308,4 +335,3 @@
   </script>
 </body>
 </html>
-
